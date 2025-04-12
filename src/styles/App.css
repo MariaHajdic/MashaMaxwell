@@ -1,0 +1,33 @@
+/* Global resets and layout structure */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
+
+* {
+  font-family: 'Work Sans', system-ui, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app__container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.page__content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 16rem;
+}
+
+@media (max-width: 900px) {
+  .app__container {
+    flex-direction: column;
+  }
+
+  .page__content {
+    padding: 1rem;
+    margin-left: 0;
+  }
+}
