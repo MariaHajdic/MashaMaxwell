@@ -1,6 +1,10 @@
 import { useState } from "react"
 import '../styles/ContactForm.css'
 
+type Props = {
+  onClose: () => void
+}
+
 const ContactForm = ({ onClose }: Props) => {
   const [formData, setFormData] = useState({
     name: "",
