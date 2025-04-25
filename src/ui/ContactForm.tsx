@@ -1,7 +1,7 @@
 import { useState } from "react"
 import '../styles/ContactForm.css'
 
-const ContactForm = () => {
+const ContactForm = ({ onClose }: Props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
