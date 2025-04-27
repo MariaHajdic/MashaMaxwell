@@ -10,6 +10,12 @@
     justify-content: center;
     margin: 2rem 0;
 }
+
+.artist_photo {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 2rem;
+}
   
 .example__column {
     position: relative;

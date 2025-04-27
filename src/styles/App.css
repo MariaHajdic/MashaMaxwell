@@ -9,6 +9,11 @@
   padding: 0;
 }
 
+img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+}
+
 .app__container {
   display: flex;
   flex-direction: row;
