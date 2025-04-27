@@ -41,18 +41,21 @@ const ContactForm = ({ onClose }: Props) => {
   }
 
   return (
-    <div className="contact-form">
-      <h2>Get in Touch</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Your Name"
-          value={formData.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Your Email" 
-          value={formData.email} onChange={handleChange} required />
-        <textarea name="message" placeholder="Your Message" 
-          value={formData.message} onChange={handleChange} required />
-        <button type="submit">Send</button>
-      </form>
-      {status && <p>{status}</p>}
+    <div className="contact-form__overlay">
+      <div className="contact-form">
+        <button className="contact-form__close" onClick={onClose}>×</button>
+        <h2>Contact Me</h2>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="name" placeholder="Your Name"
+            value={formData.name} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Your Email" 
+            value={formData.email} onChange={handleChange} required />
+          <textarea name="message" placeholder="Your Message" 
+            value={formData.message} onChange={handleChange} required />
+          <button type="submit">Send</button>
+        </form>
+        {status && <p>{status}</p>}
+      </div>
     </div>
   )
 }
