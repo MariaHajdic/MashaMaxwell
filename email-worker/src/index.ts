@@ -53,10 +53,10 @@ export default {
 		})
 
 		if (error) {
-		return new Response("Failed to send email", {
-			status: 500,
-			headers: { "Access-Control-Allow-Origin": "*" }
-		})
+			return new Response(`Failed to send email: ${error.message || 'Unknown error'}`, {
+				status: 500,
+				headers: { "Access-Control-Allow-Origin": "*" }
+			})
 		}
 
 		return new Response("Email sent successfully!", {
