@@ -36,7 +36,7 @@ const ContactForm = ({ onClose }: Props) => {
         setStatus("Failed to send message.")
     }
     } catch (error) {
-        setStatus(error.toString())
+        setStatus("Error sending message.")
     }
   }
 
