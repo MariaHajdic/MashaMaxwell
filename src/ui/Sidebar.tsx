@@ -5,6 +5,7 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import instagramLogo from '../assets/logos/logo_instagram.png'
 import facebookLogo from '../assets/logos/logo_facebook.png'
+import whatsappLogo from "../assets/logos/logo_whatsapp.png"
 import burgerIcon from '../assets/logos/burger_menu.png'
 import ContactForm from './ContactForm'
 import '../styles/Sidebar.css'
@@ -44,11 +45,18 @@ const Sidebar = () => {
 
         <div className="sidebar__footer">
           <div className="sidebar__socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/masha__maxwell" target="_blank" rel="noopener noreferrer">
               <img src={instagramLogo} alt="Instagram logo" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/groups/1307304403689344" target="_blank" rel="noopener noreferrer">
               <img src={facebookLogo} alt="Facebook logo" />
+            </a>
+            <a
+              href="https://wa.me/447902580783"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={whatsappLogo} alt="WhatsApp" />
             </a>
           </div>
 
