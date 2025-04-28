@@ -59,7 +59,7 @@ export default {
 		})
 		}
 
-		return new Response("Email sent!", {
+		return new Response("Email sent successfully!", {
 		status: 200,
 		headers: { "Access-Control-Allow-Origin": "*" }
 		})
