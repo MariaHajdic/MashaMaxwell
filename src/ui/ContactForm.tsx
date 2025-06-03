@@ -54,6 +54,10 @@ const ContactForm = ({ onClose }: Props) => {
             value={formData.message} onChange={handleChange} required />
           <button type="submit">Send</button>
         </form>
+          <p>You should always receive a confirmation once your request is being processed.</p>
+          <p>If you have not within 2 days, feel free to contact me directly at 
+            <a href="mailto:masha@mashamaxwell.co.uk" style={{ color: '#aaa' }}> masha@mashamaxwell.co.uk </a>
+             or via WhatsApp.</p>
         {status && <p>{status}</p>}
       </div>
     </div>
