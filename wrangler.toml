@@ -1,0 +1,9 @@
+name = "worker-masha-maxwell-redirects"
+main = "worker-masha-maxwell-redirects/script.js"
+compatibility_date = "2025-08-21"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"

@@ -64,7 +64,7 @@ const Sidebar = () => {
             <div>© {new Date().getFullYear()} Masha Maxwell</div>
             <div>Powered by{' '}
               <a href="https://hajdicdesigns.co.uk" target="_blank" 
-                rel="noopener noreferrer">Hajdic Designs</a>
+                rel="noopener noreferrer">Maria Hajdic</a>
             </div>
           </div>
         </div>
