@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
@@ -15,69 +15,88 @@ const getNavigationLinkClass = ({ isActive }: { isActive: boolean }) =>
     ? 'sidebar__navigation-link sidebar__navigation-link--active'
     : 'sidebar__navigation-link'
 
+const navLinks = [
+  { to: '/', label: 'Gallery' },
+  { to: '/about', label: 'About' },
+  { to: '/commission', label: 'Commission' },
+]
+
+const socialLinks = [
+  { href: 'https://instagram.com/masha__maxwell', img: instagramLogo, alt: 'Instagram logo' },
+  { href: 'https://www.facebook.com/profile.php?id=61578993736297', img: facebookLogo, alt: 'Facebook logo' },
+  { href: 'https://wa.me/447902580783', img: whatsappLogo, alt: 'WhatsApp' },
+]
+
 const Sidebar = () => {
-  const [isContactFormVisible, setIsContactFormVisible] = useState(false)
   const [menuAnchorElement, setMenuAnchorElement] = useState<null | HTMLElement>(null)
   const isMenuOpen = Boolean(menuAnchorElement)
+  const navigate = useNavigate()
 
   const handleMenuButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     setMenuAnchorElement(event.currentTarget)
   }
 
-  const handleMenuClose = () => {
-    setMenuAnchorElement(null);
+  const handleMenuClose = () => setMenuAnchorElement(null)
+
+  const handleGetInTouchClick = () => {
+    navigate('/commission#contact-section')
   }
 
   return (
     <header className="sidebar">
-      {/* Desktop View Elements */}
+      {/* Desktop */}
       <div className="desktop">
         <div className="sidebar__logo">Masha<br />Maxwell</div>
 
         <nav className="sidebar__navigation">
-          <NavLink to="/" className={getNavigationLinkClass}>Gallery</NavLink>
-          <NavLink to="/about" className={getNavigationLinkClass}>About</NavLink>
-          <NavLink to="/commission" className={getNavigationLinkClass}>Commission</NavLink>
+          {navLinks.map(link => (
+            <NavLink key={link.to} to={link.to} className={getNavigationLinkClass}>
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
 
-        <button className="sidebar__contact-button"
-          onClick={() => setIsContactFormVisible(true)}>Get in Touch</button>
+        <button
+          className="sidebar__contact-button"
+          onClick={handleGetInTouchClick}
+        >
+          Get in Touch
+        </button>
 
         <div className="sidebar__footer">
           <div className="sidebar__socials">
-            <a href="https://instagram.com/masha__maxwell" target="_blank" rel="noopener noreferrer">
-              <img src={instagramLogo} alt="Instagram logo" />
-            </a>
-            <a href="https://www.facebook.com/groups/1307304403689344" target="_blank" rel="noopener noreferrer">
-              <img src={facebookLogo} alt="Facebook logo" />
-            </a>
-            <a
-              href="https://wa.me/447902580783"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={whatsappLogo} alt="WhatsApp" />
-            </a>
+            {socialLinks.map(({ href, img, alt }) => (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+                <img src={img} alt={alt} />
+              </a>
+            ))}
           </div>
 
           <div className="sidebar__info">
             <div>© {new Date().getFullYear()} Masha Maxwell</div>
-            <div>Powered by{' '}
-              <a href="https://hajdicdesigns.co.uk" target="_blank" 
-                rel="noopener noreferrer">Maria Hajdic</a>
+            <div>
+              Powered by{' '}
+              <a href="https://hajdicdesigns.co.uk" target="_blank" rel="noopener noreferrer">
+                Maria Hajdic
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile View Elements */}
+      {/* Mobile */}
       <div className="mobile">
         <div className="mobile__header">
           <div className="sidebar__logo">Masha Maxwell</div>
 
           <div className="mobile__top-bar">
-            <button className="sidebar__contact-button"
-              onClick={() => setIsContactFormVisible(true)}>Get in Touch</button>
+            {/* Both mobile and desktop buttons now use the same handler */}
+            <button
+              className="sidebar__contact-button"
+              onClick={handleGetInTouchClick}
+            >
+              Get in Touch
+            </button>
 
             <Button
               aria-label="Open Menu"
@@ -90,12 +109,11 @@ const Sidebar = () => {
             </Button>
 
             <div className="sidebar__socials-mobile">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <img src={instagramLogo} alt="Instagram logo" />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src={facebookLogo} alt="Facebook logo" />
-              </a>
+              {socialLinks.slice(0, 2).map(({ href, img, alt }) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+                  <img src={img} alt={alt} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -108,25 +126,15 @@ const Sidebar = () => {
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
-          <MenuItem onClick={handleMenuClose} disableGutters>
-            <NavLink to="/" className="burger-menu-link">
-              Gallery
-            </NavLink>
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <NavLink to="/about" className="burger-menu-link">
-              About
-            </NavLink>
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <NavLink to="/commission" className="burger-menu-link">
-              Commission
-            </NavLink>
-          </MenuItem>
+          {navLinks.map(link => (
+            <MenuItem key={link.to} onClick={handleMenuClose}>
+              <NavLink to={link.to} className="burger-menu-link">
+                {link.label}
+              </NavLink>
+            </MenuItem>
+          ))}
         </Menu>
       </div>
-
-      {isContactFormVisible && <ContactForm onClose={() => setIsContactFormVisible(false)} />}
     </header>
   )
 }

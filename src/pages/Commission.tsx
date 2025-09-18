@@ -114,6 +114,17 @@ const Commission: React.FC = () => {
                 I recommend using a framer experienced with pastel artworks. A double mount is ideal to prevent the glass from 
                 touching the surface. Avoid hanging the portrait in direct sunlight or humid areas to ensure its longevity.
             </p><br />
+
+            {/* Contact Section */}
+            <div id="contact-section" style={{ marginTop: '3rem', textAlign: 'center', }}>
+                <h3>Contact</h3><br />
+                <p>
+                    For commission inquiries, email me at{" "}
+                    <a href="mailto:masha.maxwell.art@gmail.com">
+                        masha@mashamaxwell.co.uk
+                    </a> or contact me via <a href="https://wa.me/447902580783">WhatsApp</a>.
+                </p>
+            </div>
         </div>
     )
 }

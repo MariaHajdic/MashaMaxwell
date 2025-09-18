@@ -25,6 +25,15 @@ img {
   margin-left: 16rem;
 }
 
+a {
+  color: #777;
+}
+
+a:hover {
+  color: #bbb;
+  transition: transform 0.3s ease;
+}
+
 @media (max-width: 900px) {
   .app__container {
     flex-direction: column;

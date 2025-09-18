@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 import About from "./pages/About"
@@ -26,6 +27,7 @@ const AppContent = () => {
   return (
     <div className="app__container">
       <Sidebar />
+      <ScrollToHash />
 
       <main className="page__content">
         <AnimatePresence mode="wait">
@@ -55,5 +57,25 @@ const App = () => (
     <AppContent />
   </BrowserRouter>
 )
+
+function ScrollToHash() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const timeout = setTimeout(() => {
+        const element = document.getElementById(hash.replace("#", ""))
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      }, 500)
+      return () => clearTimeout(timeout)
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }, [pathname, hash])
+
+  return null
+}
 
 export default App
