@@ -7,7 +7,6 @@ import instagramLogo from '../assets/logos/logo_instagram.png'
 import facebookLogo from '../assets/logos/logo_facebook.png'
 import whatsappLogo from "../assets/logos/logo_whatsapp.png"
 import burgerIcon from '../assets/logos/burger_menu.png'
-import ContactForm from './ContactForm'
 import '../styles/Sidebar.css'
 
 const getNavigationLinkClass = ({ isActive }: { isActive: boolean }) =>
