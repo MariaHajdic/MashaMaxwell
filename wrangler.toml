@@ -1,4 +1,4 @@
-name = "worker-masha-maxwell-redirects"
+name = "mashamaxwell"
 main = "worker-masha-maxwell-redirects/script.js"
 compatibility_date = "2025-08-21"
 
